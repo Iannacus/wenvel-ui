@@ -35,6 +35,13 @@ const properties = {
   },
 };
 
+const paletteColors = {
+  fontDark: "#123769",
+  fontGrey: "#6a6f77",
+  fontGrey1: "#666b6d",
+  fontBlue: "#5178e8",
+};
+
 export const lightTheme = {
   ...properties,
   colors: {
