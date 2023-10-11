@@ -59,6 +59,13 @@ const Content = styled.div`
   }
 `;
 
+const StyledLabel = styled.p`
+  font-weight: ${({ theme }) => theme.typography.button.fontWeight};
+  font-size: ${({ theme }) => theme.typography.button.fontSize};
+  text-transform: ${({ theme }) => theme.typography.button.transform};
+  line-height: ${({ theme }) => theme.typography.button.lineHeight};
+`;
+
 const sizes = {
   small: {
     value: "1.2rem 2.4rem",
@@ -122,7 +129,9 @@ function Button({ variant, size, label, ...props }) {
     >
       <StyledButton {...{ ...variants[variant], ...props }}>
         <InnerContainer {...{ ...variants[variant], ...sizes[size] }}>
-          <Content>{label}</Content>
+          <Content>
+            <StyledLabel>{label}</StyledLabel>
+          </Content>
         </InnerContainer>
       </StyledButton>
     </DropShadowWrapper>
