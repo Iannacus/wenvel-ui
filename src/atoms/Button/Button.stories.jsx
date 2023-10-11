@@ -43,5 +43,11 @@ export const Standard = {
 };
 
 export const Premium = {
-  render: () => <Button variant="premium" label="premium" />,
+  render: () => (
+    <Button
+      variant="premium"
+      label="premium"
+      onClick={() => console.log("haciendo click")}
+    />
+  ),
 };

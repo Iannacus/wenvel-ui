@@ -17,6 +17,9 @@ const StyledButton = styled.button`
     ${props.bg3} 100%
   )`};
   filter: ${(props) => `drop-shadow(0px 10px 10px ${props.dropShadowBg})`};
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const InnerContainer = styled.div`
@@ -111,9 +114,9 @@ const variants = {
   },
 };
 
-function Button({ variant, size, label }) {
+function Button({ variant, size, label, ...props }) {
   return (
-    <StyledButton {...variants[variant]}>
+    <StyledButton {...{ ...variants[variant], ...props }}>
       <InnerContainer {...{ ...variants[variant], ...sizes[size] }}>
         <Content>{label}</Content>
       </InnerContainer>
