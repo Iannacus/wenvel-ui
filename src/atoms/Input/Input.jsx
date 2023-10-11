@@ -8,18 +8,21 @@ const StyledLabel = styled.span`
   top: 0;
   left: 0;
   pointer-events: none;
-  padding: 1.9rem 1rem;
-  font-size: 1.8rem;
+  padding: 1rem 0.8rem;
   font-weight: 500;
   color: #666b6d;
   transition: 0.2s;
+  font-size: ${({ theme }) => theme.typography.body1.fontSize};
+  line-height: ${({ theme }) => theme.typography.body1.lineHeight};
 `;
 
 const StyledInput = styled.input`
+  width: 100%;
   position: relative;
   background: transparent;
-  height: 5.5rem;
-  font-size: 1.6rem;
+  height: 3.8rem;
+  font-size: ${({ theme }) => theme.typography.body1.fontSize};
+  line-height: ${({ theme }) => theme.typography.body1.lineHeight};
   font-weight: 500;
   color: #666b6d;
   padding: 0 0.5rem;
@@ -39,7 +42,7 @@ const StyledInput = styled.input`
   &:valid ~ ${StyledLabel}, &:focus ~ ${StyledLabel} {
     display: block;
     padding: 0 5px;
-    transform: translateY(-1rem) translateX(-0.8rem) scale(0.85);
+    transform: translateY(-0.5rem) scale(0.85);
     z-index: 2;
     transition: 0.2s;
     color: ${(props) => props.variant};
@@ -47,6 +50,7 @@ const StyledInput = styled.input`
 `;
 
 const InputWrapper = styled.div`
+  width: ${(props) => (props.fullWidth ? "100%" : "fit-content")};
   position: relative;
   & i {
     position: absolute;
@@ -70,9 +74,9 @@ const variants = {
   premium: "#5ed7fe",
 };
 
-function Input({ variant, label, ...props }) {
+function Input({ variant, label, fullWidth, ...props }) {
   return (
-    <InputWrapper>
+    <InputWrapper fullWidth={fullWidth}>
       <StyledInput required="required" variant={variants[variant]} {...props} />
       <StyledLabel>{label}</StyledLabel>
       <i />

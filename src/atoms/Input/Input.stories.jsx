@@ -3,9 +3,6 @@ import Input from "./Input";
 export default {
   title: "Atoms/TextInput",
   component: Input,
-  parameters: {
-    layout: "centered",
-  },
   tags: ["autodocs"],
   argTypes: {
     variant: {
@@ -14,6 +11,9 @@ export default {
     },
     label: {
       control: "text",
+    },
+    fullWidth: {
+      control: "boolean",
     },
   },
 };
