@@ -18,28 +18,31 @@ const StyledLabel = styled.span`
 const StyledInput = styled.input`
   position: relative;
   background: transparent;
-  height: 6.3rem;
+  height: 5.5rem;
   font-size: 1.6rem;
   font-weight: 500;
   color: #666b6d;
-  padding: 0 1rem;
+  padding: 0 0.5rem;
   border: none;
   outline: none;
   transition: 0.5s;
   z-index: 1;
   border-bottom: solid 0.2rem #e1e1ec;
   &:focus {
-    border-bottom: 0.2rem solid #999dfd;
+    border-bottom: ${(props) =>
+      props.variant ? `0.2rem solid ${props.variant}` : "0.2rem solid #999dfd"};
   }
   &:hover {
-    border-bottom: 0.2rem solid #999dfd;
+    border-bottom: ${(props) =>
+      props.variant ? `0.2rem solid ${props.variant}` : "0.2rem solid #999dfd"};
   }
   &:valid ~ ${StyledLabel}, &:focus ~ ${StyledLabel} {
     display: block;
     padding: 0 5px;
-    transform: translateY(-1rem) scale(0.85);
+    transform: translateY(-1rem) translateX(-0.8rem) scale(0.85);
     z-index: 2;
     transition: 0.2s;
+    color: ${(props) => props.variant};
   }
 `;
 
@@ -59,14 +62,38 @@ const InputWrapper = styled.div`
   }
 `;
 
-function Input() {
+const variants = {
+  primary: "#999dfd",
+  secondary: "#ff93f2",
+  basic: "#ff93f2",
+  standard: "#ffb7f6",
+  premium: "#5ed7fe",
+};
+
+function Input({ variant, label, ...props }) {
   return (
     <InputWrapper>
-      <StyledInput required="required" />
-      <StyledLabel>Contraseña</StyledLabel>
+      <StyledInput required="required" variant={variants[variant]} {...props} />
+      <StyledLabel>{label}</StyledLabel>
       <i />
     </InputWrapper>
   );
 }
 
 export default Input;
+
+Input.propTypes = {
+  label: PropTypes.string.required,
+  variant: PropTypes.oneOf([
+    "primary",
+    "secondary",
+    "standard",
+    "basic",
+    "premium",
+  ]),
+};
+
+Input.defaultProps = {
+  variant: "primary",
+  label: "example",
+};
