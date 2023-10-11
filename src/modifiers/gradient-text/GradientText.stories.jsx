@@ -1,7 +1,7 @@
-import GradientText from "./GradientText";
+import GradientText from "./GradientTextWrapper";
 
 export default {
-  title: "Atoms/Gradient-text",
+  title: "Modifiers/Gradient-text",
   component: GradientText,
   argTypes: {
     children: {

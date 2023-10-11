@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
+import DropShadowWrapper from "../../modifiers/drop-shadow/DropShadowWrapper";
 
 const StyledButton = styled.button`
   display: inline-block;
@@ -16,7 +17,7 @@ const StyledButton = styled.button`
     ${props.bg2} 0%,
     ${props.bg3} 100%
   )`};
-  filter: ${(props) => `drop-shadow(0px 10px 10px ${props.dropShadowBg})`};
+
   &:hover {
     cursor: pointer;
   }
@@ -116,11 +117,15 @@ const variants = {
 
 function Button({ variant, size, label, ...props }) {
   return (
-    <StyledButton {...{ ...variants[variant], ...props }}>
-      <InnerContainer {...{ ...variants[variant], ...sizes[size] }}>
-        <Content>{label}</Content>
-      </InnerContainer>
-    </StyledButton>
+    <DropShadowWrapper
+      dropShadow={variants[variant]?.dropShadowBg || "transparent"}
+    >
+      <StyledButton {...{ ...variants[variant], ...props }}>
+        <InnerContainer {...{ ...variants[variant], ...sizes[size] }}>
+          <Content>{label}</Content>
+        </InnerContainer>
+      </StyledButton>
+    </DropShadowWrapper>
   );
 }
 

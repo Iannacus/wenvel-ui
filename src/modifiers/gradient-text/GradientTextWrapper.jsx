@@ -15,8 +15,8 @@ const StyledText = styled.div`
   -webkit-background-clip: text;
 `;
 
-function GradientText({ children }) {
+function GradientTextWrapper({ children }) {
   return <StyledText>{children}</StyledText>;
 }
 
-export default GradientText;
+export default GradientTextWrapper;
